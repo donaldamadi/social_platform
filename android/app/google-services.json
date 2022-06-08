@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "420685507600",
+    "project_id": "student-paddy-mobile",
+    "storage_bucket": "student-paddy-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420685507600:android:17a8718f76bcc2f6422e95",
+        "android_client_info": {
+          "package_name": "com.studentpaddy.student_paddy_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420685507600-3bi20q60lh0inhp8214q6b7ftp7t8nt9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studentpaddy.student_paddy_mobile",
+            "certificate_hash": "19b71a6a5801d522ede41adf640c6bde7202fb2c"
+          }
+        },
+        {
+          "client_id": "420685507600-9uta7ceip9pv2ea6v5c9n6tengvicm8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studentpaddy.student_paddy_mobile",
+            "certificate_hash": "6e5fc642c15ad8d338d48bac6e059abe2c07850d"
+          }
+        },
+        {
+          "client_id": "420685507600-cgkrbp40rfj3fk4d0ue14aah8boa7f1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studentpaddy.student_paddy_mobile",
+            "certificate_hash": "910e662970f98ce1c49dd9132e9b0665d0f79aa5"
+          }
+        },
+        {
+          "client_id": "420685507600-rspri9agbucht3aqbviolhsacq7ish65.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.studentpaddy.student_paddy_mobile",
+            "certificate_hash": "c9b27b1fa18aec4195c48b9317b4ef907376e684"
+          }
+        },
+        {
+          "client_id": "420685507600-5dicefn7bq9ok5bq3s9o2vgnfip4ih71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCus3D8Myvd2dkMoHgaEjgr6fuYrmIttc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420685507600-5dicefn7bq9ok5bq3s9o2vgnfip4ih71.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "420685507600-24p55a9q676re7l6637ra5aal8lccd1v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.studentpaddy.mobileapp",
+                "app_store_id": "1606258614"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

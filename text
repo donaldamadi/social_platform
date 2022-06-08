@@ -1,0 +1,9 @@
+PARENT = TOPMOST CONTENT;
+PARENTPADDY = IMMEDIATE TOP CONTENT
+
+IF AN OBJECT HAS PARENT PADDY AND PARENT, IT IS A COMMENT.
+IF PARENT PADDY IS EQUAL TO PARENT, IT IS A COMMENT
+
+If an object has parentpaddy and parent .. it is a comment
+if parentpaddy is equal to parent .. it is comment and the parent is a post, question or resource.. then get the parent
+if parentpaddy is not equal to parent.. it is a reply to a comment .. get the parentpaddy
