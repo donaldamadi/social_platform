@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_mentions/flutter_mentions.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 import 'package:get/get.dart';
+// import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:student_paddy_mobile/provider/controlModel.dart';
 import 'package:student_paddy_mobile/provider/getXController.dart';
 import 'package:student_paddy_mobile/provider/notificationManager.dart';
+import 'package:student_paddy_mobile/provider/notificationProvider.dart';
 import 'package:student_paddy_mobile/provider/quickProfileModel.dart';
 import 'package:student_paddy_mobile/provider/userModel.dart';
 import 'package:student_paddy_mobile/provider/userOnBoardModel.dart';
@@ -67,6 +70,9 @@ void main() async {
     sound: true,
   );
 
+  // final notificationProvider = ref.wa 
+
+
   // FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
 
   // // Get any initial links
@@ -76,18 +82,6 @@ void main() async {
 
   FirebaseMessaging.onMessageOpenedApp.listen((event) {
     final CounterController counterController = Get.put(CounterController());
-    //  print("onMessageOpenedApp");
-    //  print("Notification Body: ${event.notification?.body}");
-    // //  print("Notification: ${event.mutableContent}");
-    // //  print("Notification apple: ${event.notification?.apple?.imageUrl}");
-    //  print("Notification Body: ${event.notification?.body}");
-    //  print("Notification BodyLockKey: ${event.notification?.bodyLocKey}");
-    // //  print("Notification Body: ${event.notification?.bodyLocArgs}");
-
-    //  print(event.data);
-    // counterC
-    // //  print(event.notification?.);
-    // payload = event.notification?.;
     if (Platform.isIOS) {
       payload = event.notification?.bodyLocKey ?? "";
     }
@@ -158,26 +152,28 @@ void main() async {
   //  print(fcmToken);
   //  print(payload);
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider<QuickProfileChangeNotifierModel>(
-            create: (context) => QuickProfileChangeNotifierModel()),
-        ChangeNotifierProvider<UserOnBoardChangeNotifierModel>(
-            create: (context) => UserOnBoardChangeNotifierModel()),
-        ChangeNotifierProvider<UserChangeNotifierModel>(
-            create: (context) => UserChangeNotifierModel()),
-        ChangeNotifierProvider<ControlChangeNotifierModel>(
-            create: (context) => ControlChangeNotifierModel()),
-      ],
-      child: /* DevicePreview(
-        builder: (context) =>  */
-          MyApp(payload: jsonDecode(payload ?? "{}")),
-      // ),
+    riverpod.ProviderScope(
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<QuickProfileChangeNotifierModel>(
+              create: (context) => QuickProfileChangeNotifierModel()),
+          ChangeNotifierProvider<UserOnBoardChangeNotifierModel>(
+              create: (context) => UserOnBoardChangeNotifierModel()),
+          ChangeNotifierProvider<UserChangeNotifierModel>(
+              create: (context) => UserChangeNotifierModel()),
+          ChangeNotifierProvider<ControlChangeNotifierModel>(
+              create: (context) => ControlChangeNotifierModel()),
+        ],
+        child: /* DevicePreview(
+          builder: (context) =>  */
+            MyApp(payload: jsonDecode(payload ?? "{}")),
+        // ),
+      ),
     ),
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends riverpod.ConsumerStatefulWidget {
   static GlobalKey<NavigatorState> navigatorKey =
       new GlobalKey<NavigatorState>();
   static String dynamicScreen = "/";
@@ -193,13 +189,14 @@ class MyApp extends StatefulWidget {
   MyApp({this.payload});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  riverpod.ConsumerState<riverpod.ConsumerStatefulWidget> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends riverpod.ConsumerState<MyApp> {
   @override
   void initState() {
     super.initState();
+    PushNotificationService().initialise(ref);
     ControlChangeNotifierModel controlModel =
         Provider.of<ControlChangeNotifierModel>(context, listen: false);
     Future.delayed(Duration.zero, () {
