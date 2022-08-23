@@ -73,8 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
       isAppleLoading = false;
     });
     if (res) {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => NavigatorPage()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NavigatorPage()));
     }
   }
 
@@ -102,8 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
           googleData = {
             "email": value.email,
             "firstname": value.displayName?.split(" ")[0],
-            "lastname": value.displayName
-                ?.split(" ")[(value.displayName?.split(" ") ?? []).length - 1],
+            "lastname": value.displayName?.split(" ")[(value.displayName?.split(" ") ?? []).length - 1],
             "id": value.id,
             "picture": value.photoUrl,
           };
@@ -113,8 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
             isGoogleLoading = false;
           });
           if (res) {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => NavigatorPage()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NavigatorPage()));
           }
         }
       });
@@ -155,15 +152,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  launchURL2(String url) async => await launcher.canLaunch(url)
-      ? await launcher.launch(url, forceWebView: true)
-      : throw 'Could not launch $url';
+  launchURL2(String url) async => await launcher.canLaunch(url) ? await launcher.launch(url, forceWebView: true) : throw 'Could not launch $url';
 
   sendData() {
-    userData = {
-      "username_or_email": usernameEditingController.text.trim(),
-      "password": passwordEditingController.text
-    };
+    userData = {"username_or_email": usernameEditingController.text.trim(), "password": passwordEditingController.text};
   }
 
   // login(BuildContext context) {
@@ -171,10 +163,8 @@ class _LoginScreenState extends State<LoginScreen> {
   // }
 
   bool validateData() {
-    if (usernameEditingController.text.isEmpty ||
-        passwordEditingController.text.isEmpty) {
-      toastError(
-          "Your email/username and password cannot be left empty", context);
+    if (usernameEditingController.text.isEmpty || passwordEditingController.text.isEmpty) {
+      toastError("Your email/username and password cannot be left empty", context);
       return false;
     } else {
       return true;
@@ -194,28 +184,14 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             SizedBox(height: getSize(context, 100)),
-            Center(
-                child: textControl("Login", context,
-                    size: 36, fontWeight: FontWeight.w900, spacing: 2)),
+            Center(child: textControl("Login", context, size: 36, fontWeight: FontWeight.w900, spacing: 2)),
             SizedBox(height: getSize(context, 20)),
-            textControl(
-                "Enter your credentials to login or sign up to join us on Student Paddy.",
-                context,
-                size: 18,
-                fontWeight: FontWeight.w300,
-                textAlign: TextAlign.center),
+            textControl("Enter your credentials to login or sign up to join us on Student Paddy.", context,
+                size: 18, fontWeight: FontWeight.w300, textAlign: TextAlign.center),
             SizedBox(height: getSize(context, 80)),
-            CustomTextField(
-                header: "Username or Email",
-                controller: usernameEditingController,
-                borderRadius: 3),
+            CustomTextField(header: "Username or Email", controller: usernameEditingController, borderRadius: 3),
             SizedBox(height: getSize(context, 30)),
-            CustomTextField(
-                header: "Password",
-                controller: passwordEditingController,
-                type: "Password",
-                maxLines: 1,
-                borderRadius: 3),
+            CustomTextField(header: "Password", controller: passwordEditingController, type: "Password", maxLines: 1, borderRadius: 3),
             SizedBox(height: getSize(context, 70)),
             CustomButton(
                 borderRadius: 3,
@@ -232,8 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                     bool res = await loginUser(context, userData);
                     if (res) {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => NavigatorPage()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => NavigatorPage()));
                     } else {
                       setState(() {
                         loading = false;
@@ -249,10 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  child: textControl("Forgot Password ?", context,
-                      color: Color(0XFF205374),
-                      fontWeight: FontWeight.w700,
-                      size: 15),
+                  child: textControl("Forgot Password ?", context, color: Color(0XFF205374), fontWeight: FontWeight.w700, size: 15),
                 ),
               ),
             ),
@@ -260,10 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 borderRadius: 3,
                 text: "Sign Up",
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => SignUp()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => SignUp()));
                 },
                 width: getWidth(context),
                 buttonType: ButtonType.two),
@@ -276,8 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () => handleSignIn(),
               width: getWidth(context),
               buttonColor: colors.blueColorOne,
-              buttonWidget: SvgPicture.asset("assets/svgs/google_icon.svg",
-                  height: 17, width: 17),
+              buttonWidget: SvgPicture.asset("assets/svgs/google_icon.svg", height: 17, width: 17),
             ),
             SizedBox(height: getSize(context, 30)),
             if (Platform.isIOS)
@@ -293,8 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 width: getWidth(context),
                 buttonColor: Colors.black,
-                buttonWidget: SvgPicture.asset("assets/svgs/apple.svg",
-                    height: 17, width: 17, color: Colors.black),
+                buttonWidget: SvgPicture.asset("assets/svgs/apple.svg", height: 17, width: 17, color: Colors.black),
               ),
             SizedBox(height: getSize(context, 50)),
           ],

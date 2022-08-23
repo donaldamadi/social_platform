@@ -25,7 +25,7 @@ class NavigatorController extends GetxController {
             listen: false);
     FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
 
-    // When app is terminated, or user just signs in/ signs up to app after clicking on dynamic link
+    /// `When app is terminated, or user just signs in/ signs up to app after clicking on dynamic link`
     PendingDynamicLinkData? data = await dynamicLinks.getInitialLink();
     Uri? deepLink = data?.link;
     if (deepLink != null) {
@@ -69,7 +69,7 @@ class NavigatorController extends GetxController {
       }
     }
 
-    // When user clicks on dynamic link while app is not terminated
+    /// `When user clicks on dynamic link while app is not terminated`
     dynamicLinks.onLink.listen((dynamicLinkData) async {
       var list = dynamicLinkData.link.toString().split(".com/");
       var validList = list[1].split("/");
